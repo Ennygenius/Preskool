@@ -95,8 +95,6 @@ def add_teachers(request):
         if form.is_valid():
             form.save()
             return redirect('teachers')
-        else:
-            messages.info(request, 'Credentials Invalid')
     else:
         form = AddStaff()
     return render(request, 'add-teacher.html', {'form': form})

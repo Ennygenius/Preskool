@@ -67,6 +67,7 @@ class AddStaff(forms.ModelForm):
             'experience': forms.TextInput(attrs={'class':'form-control', 'placeholder':"Enter Experience"}),
             'address': forms.TextInput(attrs={'class':'form-control', 'placeholder':"Enter Address"}),
             'teacher_class': forms.TextInput(attrs={'class':'form-control', 'placeholder':"Enter teacher Class"}),
+            'subject_teaching': forms.Select(choices=SUBJECT_TEACHING, attrs={'class':'form-control'}),
             'city': forms.TextInput(attrs={'class':'form-control', 'placeholder':"Enter City"}),
             'country': forms.TextInput(attrs={'class':'form-control', 'placeholder':"Enter Country"}),
             'zip_code': forms.TextInput(attrs={'class':'form-control', 'placeholder':"Enter Zip Code"}),

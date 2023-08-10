@@ -268,14 +268,14 @@
                             {% endfor%}
 
                             <div class="card-body">
-                                <form method='post'>
+                                <form method='post' enctype="multipart/form-data">
                                     {% csrf_token %}
                                     <!-- <div class="col-12 ">
-                                        <div class="form-group">
-                                            {{form}}
-                                            <button type="submit" class="btn btn-danger mt-3">Submit </button>
-                                        </div>
-                                    </div> -->
+            <div class="form-group">
+                {{form}}
+                <button type="submit" class="btn btn-danger mt-3">Submit </button>
+            </div>
+        </div> -->
                                     <div class="row">
                                         <div class="col-12">
                                             <h5 class="form-title"><span>Basic Details</span></h5>
@@ -364,6 +364,12 @@
                                                 {{form.teacher_class}}
                                             </div>
                                         </div>
+                                        <div class="col-12 col-sm-4">
+                                            <div class="form-group local-forms">
+                                                <label>Subject Teaching <span class="login-danger">*</span></label>
+                                                {{form.subject_teaching}}
+                                            </div>
+                                        </div>
                                         <div class="col-12">
                                             <h5 class="form-title"><span>Address</span></h5>
                                         </div>
@@ -414,6 +420,7 @@
                                                 {{form.is_primary_school_teacher}}
                                             </div>
                                         </div>
+
                                         <div class="col-12 col-sm-4">
                                             <div class="form-group students-up-files">
                                                 <label>Upload Student Photo (150px X 150px)</label>
