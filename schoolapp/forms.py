@@ -56,7 +56,7 @@ class AddStaff(forms.ModelForm):
         SUBJECT_TEACHING = (
             ('MATHEMATICS', 'mathematics'),
             ('ENGLISH', 'english'),
-            ('BIOLOGY', 'biology')
+            ('BIOLOGY', 'biology'),
         )
       
         widgets = {
@@ -80,4 +80,22 @@ class AddStaff(forms.ModelForm):
             'teacher_class': forms.Select(attrs={'class':'form-control'}),
             'phone_no': forms.NumberInput(attrs={'class':'form-control', 'placeholder': 'Phone Number'}),
             'is_primary_school_teacher':forms.CheckboxInput( attrs={'class': 'form-control mt-2'})
+        }
+
+class Edit_Staff(forms.ModelForm):
+    class Meta:
+        model = Staff
+        fields = ('first_name','last_name','email','phone_no','dob','gender','image')
+        GENDER_CHOICES = (
+            ('male', 'MALE'),
+            ('female', 'FEMALE')
+        )
+
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':"First Name"}),
+            'last_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':"Last Name"}),
+            'dob': forms.DateInput(attrs={'type': 'date', 'class': 'form-control mt-2'}),
+            'gender': forms.Select(choices=GENDER_CHOICES, attrs={'class':'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter Your Email'}),
+            'phone_no': forms.NumberInput(attrs={'class':'form-control', 'placeholder': 'Phone Number'}),
         }

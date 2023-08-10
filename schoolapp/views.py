@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .forms import *
+from django.http import HttpResponse
 
 # Create your views here.
 @login_required(login_url="login")
@@ -102,15 +103,18 @@ def add_teachers(request):
 def edit_staff(request, id):
     staffs = Staff.objects.get(pk=id)
     if request.method == 'POST':
-        form = AddStaff(request.POST,  request.FILES, instance=staffs)
+        form = Edit_Staff(request.POST,  request.FILES, instance=staffs)
         if form.is_valid():
             form.save()
+            print("success")
             return redirect('teachers')
         else:
+            print(form.errors())
             messages.info(request, 'Credentials Invalid')
+            return HttpResponse("failed to update")
     else:
         form = AddStudent(instance=staffs)
-    return render(request, 'edit-teacher.html', {'form': form})
+        return render(request, 'edit-teacher.html', {'form': form})
 
 def delete_staff(request, id):
     staff = Staff.objects.get(pk=id)
